@@ -41,7 +41,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        searchMoviesByName("spiderman")
+
+        supportActionBar?.title = "Movies"
+
+        searchMoviesByName("You")
 
         adapter = MovieAdapter(movieList) {  position ->
             val movie = movieList [position]
