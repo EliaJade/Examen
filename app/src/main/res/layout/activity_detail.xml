@@ -8,6 +8,12 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"/>
+
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -33,89 +39,148 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/directorDetailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Director:"
-        android:textSize="26dp"
-        android:textAlignment="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Director: "
+            android:textSize="26dp"
+            android:textAlignment="center"/>
 
-    <TextView
-        android:id="@+id/yearDetailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Year:"
-        android:textSize="26dp"
-        android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/directorDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Director"
+            android:textSize="26dp"
+            android:textAlignment="center"/>
 
-    <TextView
-        android:id="@+id/genreDetailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Genre:"
-        android:textSize="26dp"
-        android:textAlignment="center"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/countryDetailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Country:"
-        android:textSize="26dp"
-        android:textAlignment="center"/>
-
-    <TextView
-        android:id="@+id/runtimeDetailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Runtime:"
-        android:textSize="26dp"
-        android:textAlignment="center"/>
-
-    <TextView
-        android:id="@+id/plotDetailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Plot:"
-        android:textSize="26dp"
-        android:textAlignment="center"/>
-
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Year: "
+            android:textSize="26dp"
+            android:textAlignment="center"/>
 
+        <TextView
+            android:id="@+id/yearDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Year"
+            android:textSize="26dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/bookDescriptionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:textAlignment="center"
-                android:justificationMode="inter_word"
-                android:paddingBottom="30dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:lineHeight="30sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
-        </ScrollView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Genre: "
+            android:textSize="26dp"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/genreDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Genre"
+            android:textSize="26dp"
+            android:textAlignment="center"/>
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progress"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country: "
+            android:textSize="26dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/countryDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country"
+            android:textSize="26dp"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Runtime: "
+            android:textSize="26dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/runtimeDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Runtime"
+            android:textSize="26dp"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plot: "
+            android:textSize="26dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plot"
+            android:textSize="26dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/plotDetailTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true"/>
-    </FrameLayout>
+            android:textSize="22sp"
+            android:textAlignment="center"
+            android:justificationMode="inter_word"
+            android:paddingBottom="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:lineHeight="30sp"/>
     </LinearLayout>
 
 </LinearLayout>
