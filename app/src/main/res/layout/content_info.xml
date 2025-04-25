@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:text="Title: "
+            android:textSize="8dp"/>
+
+        <TextView
+            android:id="@+id/titleDetailTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Title"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Director: "
+            android:textSize="8dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/directorDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Director"
+            android:layout_weight="2"
+            android:textSize="8dp"
+            android:textAlignment="center"/>
+
+</LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Year: "
+    android:textSize="8dp"
+    android:textAlignment="center"/>
+
+<TextView
+    android:id="@+id/yearDetailTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Year"
+    android:textSize="8dp"
+    android:textAlignment="center"/>
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Genre: "
+    android:textSize="8dp"
+    android:textAlignment="center"/>
+<TextView
+    android:id="@+id/genreDetailTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Genre"
+    android:textSize="8dp"
+    android:textAlignment="center"/>
+
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Country: "
+    android:textSize="8dp"
+    android:textAlignment="center"/>
+
+<TextView
+    android:id="@+id/countryDetailTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Country"
+    android:textSize="8dp"
+    android:textAlignment="center"/>
+
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Runtime: "
+    android:textSize="8dp"
+    android:textAlignment="center"/>
+
+<TextView
+    android:id="@+id/runtimeDetailTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Runtime"
+    android:textSize="8dp"
+    android:textAlignment="center"/>
+
+</LinearLayout>
