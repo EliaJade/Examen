@@ -1,6 +1,7 @@
 package com.example.examen.activities
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -36,24 +37,56 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val id = intent.getStringExtra("MOVIE_ID")
 
         getMoviesById(id!!)
+
+        binding.navigationBar.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_info -> {
+                    binding.plotContent.root.visibility = View.GONE
+                    binding.infoContent.root.visibility = View.VISIBLE
+
+                }
+
+                R.id.action_plot -> {
+                    binding.infoContent.root.visibility = View.GONE
+                    binding.plotContent.root.visibility = View.VISIBLE
+                }
+
+            }
+            true
+        }
+        binding.navigationBar.selectedItemId = R.id.action_info
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     fun loadData() {
         supportActionBar?.title = movie.Title
 
         Picasso.get().load(movie.Poster).into(binding.posterImageView)
-        binding.titleDetailTextView.text = movie.Title
-        binding.yearDetailTextView.text = movie.Year
-        binding.plotDetailTextView.text = movie.Plot
-        binding.runtimeDetailTextView.text = movie.Runtime
-        binding.genreDetailTextView.text = movie.Genre
-        binding.directorDetailTextView.text = movie.Director
-        binding.runtimeDetailTextView.text = movie.Runtime
 
+        //INFO
+        binding.infoContent.titleDetailTextView.text = movie.Title
+        binding.infoContent.directorDetailTextView.text = movie.Director
+        binding.infoContent.yearDetailTextView.text = movie.Year
+        binding.infoContent.genreDetailTextView.text = movie.Genre
+        binding.infoContent.countryDetailTextView.text = movie.Country
+        binding.infoContent.runtimeDetailTextView.text = movie.Runtime
 
+        //PLOT
+        binding.plotContent.plotDetailTextView.text = movie.Plot
     }
 
     fun getMoviesById(id: String) {

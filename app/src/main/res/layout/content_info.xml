@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_marginTop="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -15,17 +16,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="textEnd"
+            android:textStyle="bold"
             android:text="Title: "
-            android:textSize="8dp"/>
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/titleDetailTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Title"
-            android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:text=" Title"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,22 +36,45 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Director: "
-            android:textSize="8dp"
-            android:textAlignment="center"/>
+            android:textSize="20dp"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            android:text="Director: "/>
 
         <TextView
             android:id="@+id/directorDetailTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Director"
+            android:text=" Director"
             android:layout_weight="2"
-            android:textSize="8dp"
-            android:textAlignment="center"/>
+            android:textSize="20dp"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:text="Year: " />
+
+            <TextView
+                android:id="@+id/yearDetailTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="20dp"
+                android:text=" Year"/>
 </LinearLayout>
 
     <LinearLayout
@@ -56,83 +82,69 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-<TextView
-    android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:text="Genre: "/>
+            <TextView
+                android:id="@+id/genreDetailTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="20dp"
+                android:text=" Genre"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Year: "
-    android:textSize="8dp"
-    android:textAlignment="center"/>
+    android:orientation="horizontal">
 
-<TextView
-    android:id="@+id/yearDetailTextView"
-    android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:text="Country: "/>
+
+            <TextView
+                android:id="@+id/countryDetailTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="20dp"
+                android:text=" Country"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Year"
-    android:textSize="8dp"
-    android:textAlignment="center"/>
-</LinearLayout>
+    android:orientation="horizontal">
 
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:text="Runtime: "/>
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Genre: "
-    android:textSize="8dp"
-    android:textAlignment="center"/>
-<TextView
-    android:id="@+id/genreDetailTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Genre"
-    android:textSize="8dp"
-    android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/runtimeDetailTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="20dp"
+                android:text=" Runtime"/>
 
-</LinearLayout>
-
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal">
-
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Country: "
-    android:textSize="8dp"
-    android:textAlignment="center"/>
-
-<TextView
-    android:id="@+id/countryDetailTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Country"
-    android:textSize="8dp"
-    android:textAlignment="center"/>
-
-</LinearLayout>
-
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal">
-
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Runtime: "
-    android:textSize="8dp"
-    android:textAlignment="center"/>
-
-<TextView
-    android:id="@+id/runtimeDetailTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Runtime"
-    android:textSize="8dp"
-    android:textAlignment="center"/>
-
+    </LinearLayout>
 </LinearLayout>

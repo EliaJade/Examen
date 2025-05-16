@@ -6,6 +6,6 @@
         android:title="Info"/>
 
     <item android:id="@+id/action_plot"
-        android:icon="@drawable/ic_plot"
+        android:icon="@drawable/plot_icon"
         android:title="Plot"/>
 </menu>
