@@ -11,7 +11,7 @@ class MyMovies(
     val Director: String,
     val Genre: String,
     val Country: String,
-    val Status: String
+    val Status: Status
 
     )
 {
@@ -19,17 +19,17 @@ class MyMovies(
     companion object {
         const val TABLE_NAME = "MyBooks"
 
-        const val COLUMN_BOOK_STATUS = "status"
+        const val COLUMN_MOVIE_STATUS = "status"
 
-        const val COLUMN_BOOK_TITLE = "title"
-        const val COLUMN_BOOK_YEAR = "year"
-        const val COLUMN_BOOK_IMDBID = "imdbid"
-        const val COLUMN_BOOK_POSTER = "poster"
-        const val COLUMN_BOOK_PLOT = "plot"
-        const val COLUMN_BOOK_RUNTIME = "runtime"
-        const val COLUMN_BOOK_DIRECTOR = "director"
-        const val COLUMN_BOOK_GENRE = "genre"
-        const val COLUMN_BOOK_COUNTRY = "country"
+        const val COLUMN_MOVIE_TITLE = "title"
+        const val COLUMN_MOVIE_YEAR = "year"
+        const val COLUMN_MOVIE_IMDBID = "imdbid"
+        const val COLUMN_MOVIE_POSTER = "poster"
+        const val COLUMN_MOVIE_PLOT = "plot"
+        const val COLUMN_MOVIE_RUNTIME = "runtime"
+        const val COLUMN_MOVIE_DIRECTOR = "director"
+        const val COLUMN_MOVIE_GENRE = "genre"
+        const val COLUMN_MOVIE_COUNTRY = "country"
 
     }
 }

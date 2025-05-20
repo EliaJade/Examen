@@ -13,16 +13,16 @@ class MyMoviesDAO(context: Context) {
         val db = databaseManager.writableDatabase
 
         val values = ContentValues().apply {
-            put(MyMovies.COLUMN_BOOK_STATUS, myMovies.Status.ordinal)
-            put(MyMovies.COLUMN_BOOK_TITLE, myMovies.Title)
-            put(MyMovies.COLUMN_BOOK_YEAR, myMovies.Year)
-            put(MyMovies.COLUMN_BOOK_IMDBID, myMovies.imdbID)
-            put(MyMovies.COLUMN_BOOK_POSTER, myMovies.Poster)
-            put(MyMovies.COLUMN_BOOK_PLOT, myMovies.Plot)
-            put(MyMovies.COLUMN_BOOK_RUNTIME, myMovies.Runtime)
-            put(MyMovies.COLUMN_BOOK_DIRECTOR, myMovies.Director)
-            put(MyMovies.COLUMN_BOOK_GENRE, myMovies.Genre)
-            put(MyMovies.COLUMN_BOOK_COUNTRY, myMovies.Country)
+            put(MyMovies.COLUMN_MOVIE_STATUS, myMovies.Status.ordinal)
+            put(MyMovies.COLUMN_MOVIE_TITLE, myMovies.Title)
+            put(MyMovies.COLUMN_MOVIE_YEAR, myMovies.Year)
+            put(MyMovies.COLUMN_MOVIE_IMDBID, myMovies.imdbID)
+            put(MyMovies.COLUMN_MOVIE_POSTER, myMovies.Poster)
+            put(MyMovies.COLUMN_MOVIE_PLOT, myMovies.Plot)
+            put(MyMovies.COLUMN_MOVIE_RUNTIME, myMovies.Runtime)
+            put(MyMovies.COLUMN_MOVIE_DIRECTOR, myMovies.Director)
+            put(MyMovies.COLUMN_MOVIE_GENRE, myMovies.Genre)
+            put(MyMovies.COLUMN_MOVIE_COUNTRY, myMovies.Country)
         }
 
         try {
@@ -39,19 +39,19 @@ class MyMoviesDAO(context: Context) {
         val db = databaseManager.writableDatabase
 
         val values = ContentValues().apply {
-            put(MyMovies.COLUMN_BOOK_STATUS, myMovies.Status.ordinal)
-            put(MyMovies.COLUMN_BOOK_TITLE, myMovies.Title)
-            put(MyMovies.COLUMN_BOOK_YEAR, myMovies.Year)
-            put(MyMovies.COLUMN_BOOK_IMDBID, myMovies.imdbID)
-            put(MyMovies.COLUMN_BOOK_POSTER, myMovies.Poster)
-            put(MyMovies.COLUMN_BOOK_PLOT, myMovies.Plot)
-            put(MyMovies.COLUMN_BOOK_RUNTIME, myMovies.Runtime)
-            put(MyMovies.COLUMN_BOOK_DIRECTOR, myMovies.Director)
-            put(MyMovies.COLUMN_BOOK_GENRE, myMovies.Genre)
-            put(MyMovies.COLUMN_BOOK_COUNTRY, myMovies.Country)
+            put(MyMovies.COLUMN_MOVIE_STATUS, myMovies.Status.ordinal)
+            put(MyMovies.COLUMN_MOVIE_TITLE, myMovies.Title)
+            put(MyMovies.COLUMN_MOVIE_YEAR, myMovies.Year)
+            put(MyMovies.COLUMN_MOVIE_IMDBID, myMovies.imdbID)
+            put(MyMovies.COLUMN_MOVIE_POSTER, myMovies.Poster)
+            put(MyMovies.COLUMN_MOVIE_PLOT, myMovies.Plot)
+            put(MyMovies.COLUMN_MOVIE_RUNTIME, myMovies.Runtime)
+            put(MyMovies.COLUMN_MOVIE_DIRECTOR, myMovies.Director)
+            put(MyMovies.COLUMN_MOVIE_GENRE, myMovies.Genre)
+            put(MyMovies.COLUMN_MOVIE_COUNTRY, myMovies.Country)
         }
         try {
-            val updatedRows  = db.update(MyMovies.TABLE_NAME, values, "${MyMovies.COLUMN_BOOK_IMDBID} = '${myMovies.imdbID}'", null)
+            val updatedRows  = db.update(MyMovies.TABLE_NAME, values, "${MyMovies.COLUMN_MOVIE_IMDBID} = '${myMovies.imdbID}'", null)
             Log.i("DATABASE", "Updated movies with id: $updatedRows")
         } catch (e: Exception) {
             e.printStackTrace()
@@ -65,7 +65,7 @@ class MyMoviesDAO(context: Context) {
         val db = databaseManager.writableDatabase
 
         try {
-            val deletedRows = db.delete(MyMovies.TABLE_NAME, "${MyMovies.COLUMN_BOOK_IMDBID} = '${myMovies.imdbID}'", null)
+            val deletedRows = db.delete(MyMovies.TABLE_NAME, "${MyMovies.COLUMN_MOVIE_IMDBID} = '${myMovies.imdbID}'", null)
             Log.i("DATABASE", "Deleted movies with id: $deletedRows")
         } catch (e: Exception) {
             e.printStackTrace()
@@ -76,22 +76,21 @@ class MyMoviesDAO(context: Context) {
     fun findById(id: String): MyMovies? {
         val db = databaseManager.readableDatabase
         val projection = arrayOf(
-            MyMovies.COLUMN_BOOK_IMDBID,
-            MyMovies.COLUMN_BOOK_STATUS,
-            MyMovies.COLUMN_BOOK_TITLE,
-            MyMovies.COLUMN_BOOK_YEAR,
-            MyMovies.COLUMN_BOOK_IMDBID,
-            MyMovies.COLUMN_BOOK_POSTER,
-            MyMovies.COLUMN_BOOK_PLOT,
-            MyMovies.COLUMN_BOOK_RUNTIME,
-            MyMovies.COLUMN_BOOK_DIRECTOR,
-            MyMovies.COLUMN_BOOK_GENRE,
-            MyMovies.COLUMN_BOOK_COUNTRY
+            MyMovies.COLUMN_MOVIE_STATUS,
+            MyMovies.COLUMN_MOVIE_TITLE,
+            MyMovies.COLUMN_MOVIE_YEAR,
+            MyMovies.COLUMN_MOVIE_IMDBID,
+            MyMovies.COLUMN_MOVIE_POSTER,
+            MyMovies.COLUMN_MOVIE_PLOT,
+            MyMovies.COLUMN_MOVIE_RUNTIME,
+            MyMovies.COLUMN_MOVIE_DIRECTOR,
+            MyMovies.COLUMN_MOVIE_GENRE,
+            MyMovies.COLUMN_MOVIE_COUNTRY
         )
 
-        val selection = "${MyMovies.COLUMN_BOOK_IMDBID} = '$id'"
+        val selection = "${MyMovies.COLUMN_MOVIE_IMDBID} = '$id'"
 
-        var book: MyMovies? = null
+        var movie: MyMovies? = null
 
         try {
             val cursor = db.query(
@@ -106,19 +105,19 @@ class MyMoviesDAO(context: Context) {
 
 
             if (cursor.moveToNext()) {
-                val itemId = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_IMDBID))
-                val status = cursor.getInt(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_STATUS))
-                val title = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_TITLE))
-                val year = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_YEAR))
-                val thumbnail = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_IMDBID))
-                val thumbnail = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_IMDBID))
-                val thumbnail = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_IMDBID))
-                val thumbnail = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_IMDBID))
-                val thumbnail = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_IMDBID))
-                val thumbnail = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_IMDBID))
+                val status = cursor.getInt(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_STATUS))
+                val title = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_TITLE))
+                val year = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_YEAR))
+                val itemId = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_IMDBID))
+                val poster = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_POSTER))
+                val plot = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_PLOT))
+                val runtime = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_RUNTIME))
+                val director = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_DIRECTOR))
+                val genre = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_GENRE))
+                val country = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_COUNTRY))
 
 
-                book = MyMovies(itemId, Status.entries[status], title, year, thumbnail)
+                movie = MyMovies(Status.entries[status], title, year, itemId, poster, plot, runtime, director, genre, country)
             }
 
         } catch (e: Exception) {
@@ -127,20 +126,25 @@ class MyMoviesDAO(context: Context) {
             db.close()
         }
 
-        return book
+        return movie
     }
 
     fun findAll(): List<MyMovies> {
         val db = databaseManager.readableDatabase
         val projection = arrayOf(
-            MyMovies.COLUMN_BOOK_ID,
-            MyMovies.COLUMN_BOOK_STATUS,
-            MyMovies.COLUMN_BOOK_TITLE,
-            MyMovies.COLUMN_BOOK_AUTHOR,
-            MyMovies.COLUMN_BOOK_THUMBNAIL,
+            MyMovies.COLUMN_MOVIE_STATUS,
+            MyMovies.COLUMN_MOVIE_TITLE,
+            MyMovies.COLUMN_MOVIE_YEAR,
+            MyMovies.COLUMN_MOVIE_IMDBID,
+            MyMovies.COLUMN_MOVIE_POSTER,
+            MyMovies.COLUMN_MOVIE_PLOT,
+            MyMovies.COLUMN_MOVIE_RUNTIME,
+            MyMovies.COLUMN_MOVIE_DIRECTOR,
+            MyMovies.COLUMN_MOVIE_GENRE,
+            MyMovies.COLUMN_MOVIE_COUNTRY
         )
 
-        val bookList: MutableList<MyMovies> = mutableListOf()
+        val movieList: MutableList<MyMovies> = mutableListOf()
 
         try {
             val cursor = db.query(
@@ -155,43 +159,52 @@ class MyMoviesDAO(context: Context) {
 
 
             while (cursor.moveToNext()) {
-                val itemId = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_ID))
-                val status = cursor.getInt(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_STATUS))
-                val title = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_TITLE))
-                val author = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_AUTHOR))?.split("; ")
-                val thumbnail = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_THUMBNAIL))
+                val status = cursor.getInt(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_STATUS))
+                val title = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_TITLE))
+                val year = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_YEAR))
+                val itemId = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_IMDBID))
+                val poster = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_POSTER))
+                val plot = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_PLOT))
+                val runtime = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_RUNTIME))
+                val director = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_DIRECTOR))
+                val genre = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_GENRE))
+                val country = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_COUNTRY))
 
-
-                val book = MyMovies(itemId, Status.entries[status], title, author, thumbnail)
-                bookList.add(book)
+                val movie = MyMovies(Status.entries[status], title, year, itemId, poster, plot, runtime, director, genre, country)
+                movieList.add(movie)
             }
         } catch (e: Exception) {
             e.printStackTrace()
         } finally {
             db.close()
         }
-        return bookList
+        return movieList
     }
 
-    fun findByMyBookName(query: String, status: Status?): List<MyMovies> {
+    fun findByMyMovieName(query: String, status: Status?): List<MyMovies> {
         val db = databaseManager.readableDatabase
         val projection = arrayOf(
-            MyMovies.COLUMN_BOOK_ID,
-            MyMovies.COLUMN_BOOK_STATUS,
-            MyMovies.COLUMN_BOOK_TITLE,
-            MyMovies.COLUMN_BOOK_AUTHOR,
-            MyMovies.COLUMN_BOOK_THUMBNAIL,
+            MyMovies.COLUMN_MOVIE_STATUS,
+            MyMovies.COLUMN_MOVIE_TITLE,
+            MyMovies.COLUMN_MOVIE_YEAR,
+            MyMovies.COLUMN_MOVIE_IMDBID,
+            MyMovies.COLUMN_MOVIE_POSTER,
+            MyMovies.COLUMN_MOVIE_PLOT,
+            MyMovies.COLUMN_MOVIE_RUNTIME,
+            MyMovies.COLUMN_MOVIE_DIRECTOR,
+            MyMovies.COLUMN_MOVIE_GENRE,
+            MyMovies.COLUMN_MOVIE_COUNTRY
         )
 
 
-        val bookList: MutableList<MyMovies> = mutableListOf()
+        val movieList: MutableList<MyMovies> = mutableListOf()
 
         var selection = if (status != null) {
-            "${MyMovies.COLUMN_BOOK_STATUS} = ${status.ordinal} AND "
+            "${MyMovies.COLUMN_MOVIE_STATUS} = ${status.ordinal} AND "
         } else {
             ""
         }
-        selection += "${MyMovies.COLUMN_BOOK_TITLE} LIKE '%$query%'"
+        selection += "${MyMovies.COLUMN_MOVIE_TITLE} LIKE '%$query%'"
 
         try {
             val cursor = db.query(
@@ -206,21 +219,26 @@ class MyMoviesDAO(context: Context) {
 
 
             while (cursor.moveToNext()) {
-                val itemId = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_ID))
-                val status = cursor.getInt(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_STATUS))
-                val title = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_TITLE))
-                val author = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_AUTHOR))?.split("; ")
-                val thumbnail = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_BOOK_THUMBNAIL))
+                val status = cursor.getInt(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_STATUS))
+                val title = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_TITLE))
+                val year = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_YEAR))
+                val itemId = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_IMDBID))
+                val poster = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_POSTER))
+                val plot = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_PLOT))
+                val runtime = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_RUNTIME))
+                val director = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_DIRECTOR))
+                val genre = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_GENRE))
+                val country = cursor.getString(cursor.getColumnIndexOrThrow(MyMovies.COLUMN_MOVIE_COUNTRY))
 
 
-                val book = MyMovies(itemId, Status.entries[status], title, author, thumbnail)
-                bookList.add(book)
+                val movie = MyMovies(Status.entries[status], title, year, itemId, poster, plot, runtime, director, genre, country)
+                movieList.add(movie)
             }
         } catch (e: Exception) {
             e.printStackTrace()
         } finally {
             db.close()
         }
-        return bookList
+        return movieList
     }
 }

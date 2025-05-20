@@ -3,4 +3,7 @@
 
     <string name="menu_search">Search</string>
     <string name="menu_save">Save</string>
+    <string name="status_want_to_watch">Want to watch</string>
+    <string name="status_unfinished">Unfinished</string>
+    <string name="status_watched">Watched</string>
 </resources>
