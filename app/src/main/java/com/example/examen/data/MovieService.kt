@@ -1,13 +1,9 @@
 package com.example.examen.data
 
 
-import com.example.examen.Movie
-import com.example.examen.MovieResponse
-import com.google.android.material.search.SearchBar
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieService {

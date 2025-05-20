@@ -1,4 +1,4 @@
-package com.example.examen
+package com.example.examen.data
 
 import com.google.gson.annotations.SerializedName
 
@@ -15,7 +15,7 @@ data class Movie (
     val Runtime: String,
     val Director: String,
     val Genre: String,
-    val Country: String,
+    val Country: String
 
 )
 

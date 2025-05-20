@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.examen.Movie
+import com.example.examen.data.Movie
 import com.example.examen.databinding.ItemMovieBinding
 import com.squareup.picasso.Picasso
 

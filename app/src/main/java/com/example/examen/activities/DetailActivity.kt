@@ -1,17 +1,17 @@
 package com.example.examen.activities
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.examen.Movie
+import com.example.examen.data.Movie
 import com.example.examen.R
 import com.example.examen.data.MovieService
 import com.example.examen.databinding.ActivityDetailBinding
-import com.example.examen.databinding.ActivityMainBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +22,9 @@ class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
 
     lateinit var movie: Movie
+
+    var saveMenu: MenuItem? = null
+    var myBooks: MyBooks? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +63,25 @@ class DetailActivity : AppCompatActivity() {
             true
         }
         binding.navigationBar.selectedItemId = R.id.action_info
+    }
+
+
+    private fun setSavedIcon() {
+        if (myMovies != null) {
+            saveMenu?.setIcon(R.drawable.archive_check_green)
+        } else {
+            saveMenu?.setIcon(R.drawable.archive)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.save_menu, menu)
+
+        saveMenu = menu.findItem(R.id.action_save)
+
+        setSavedIcon()
+
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
