@@ -139,10 +139,19 @@ class DetailActivity : AppCompatActivity() {
     private fun loadStatus() {
         if (myMovies != null) {
             val iconId = when(myMovies!!.Status) {
-                Status.WATCHED -> Status.WATCHED.icon
-                Status.UNFINISHED -> Status.UNFINISHED.icon
-                Status.WANT_TO_WATCH -> Status.WANT_TO_WATCH.icon
+                Status.WATCHED -> {
+                    Status.WATCHED.icon
+                }
+                Status.UNFINISHED -> {
+                    Status.UNFINISHED.icon
+                }
+                Status.WANT_TO_WATCH -> {
+                    Status.WANT_TO_WATCH.icon
+                }
+
+
             }
+
             binding.statusChip.setChipIconResource(iconId)
             binding.statusChip.text = getString(myMovies!!.Status.title)
             binding.statusChip.visibility = View.VISIBLE
@@ -151,6 +160,7 @@ class DetailActivity : AppCompatActivity() {
             binding.statusChip.visibility = View.GONE
         }
     }
+
 
 
     fun getMoviesById(id: String) {
