@@ -2,6 +2,7 @@ package com.example.examen.data
 
 
 class MyMovies(
+    var Status: Status?,
     val Title: String,
     val Year: String,
     val imdbID: String,
@@ -10,8 +11,8 @@ class MyMovies(
     val Runtime: String,
     val Director: String,
     val Genre: String,
-    val Country: String,
-    val Status: Status
+    val Country: String
+
 
     )
 {

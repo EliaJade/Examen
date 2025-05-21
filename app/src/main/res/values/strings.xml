@@ -6,4 +6,6 @@
     <string name="status_want_to_watch">Want to watch</string>
     <string name="status_unfinished">Unfinished</string>
     <string name="status_watched">Watched</string>
+    <string name="select_a_status">Select a status</string>
+    <string name="ok">OK</string>
 </resources>

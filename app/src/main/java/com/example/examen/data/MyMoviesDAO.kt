@@ -13,7 +13,7 @@ class MyMoviesDAO(context: Context) {
         val db = databaseManager.writableDatabase
 
         val values = ContentValues().apply {
-            put(MyMovies.COLUMN_MOVIE_STATUS, myMovies.Status.ordinal)
+            put(MyMovies.COLUMN_MOVIE_STATUS, myMovies.Status?.ordinal)
             put(MyMovies.COLUMN_MOVIE_TITLE, myMovies.Title)
             put(MyMovies.COLUMN_MOVIE_YEAR, myMovies.Year)
             put(MyMovies.COLUMN_MOVIE_IMDBID, myMovies.imdbID)
@@ -39,7 +39,7 @@ class MyMoviesDAO(context: Context) {
         val db = databaseManager.writableDatabase
 
         val values = ContentValues().apply {
-            put(MyMovies.COLUMN_MOVIE_STATUS, myMovies.Status.ordinal)
+            put(MyMovies.COLUMN_MOVIE_STATUS, myMovies.Status?.ordinal)
             put(MyMovies.COLUMN_MOVIE_TITLE, myMovies.Title)
             put(MyMovies.COLUMN_MOVIE_YEAR, myMovies.Year)
             put(MyMovies.COLUMN_MOVIE_IMDBID, myMovies.imdbID)

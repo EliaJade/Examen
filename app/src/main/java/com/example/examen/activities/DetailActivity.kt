@@ -5,12 +5,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.examen.data.Movie
 import com.example.examen.R
 import com.example.examen.data.MovieService
+import com.example.examen.data.MyMovies
+import com.example.examen.data.MyMoviesDAO
+import com.example.examen.data.Status
 import com.example.examen.databinding.ActivityDetailBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -24,7 +28,9 @@ class DetailActivity : AppCompatActivity() {
     lateinit var movie: Movie
 
     var saveMenu: MenuItem? = null
-    var myBooks: MyBooks? = null
+    var myMovies: MyMovies? = null
+
+    lateinit var myMoviesDAO: MyMoviesDAO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +80,8 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.save_menu, menu)
 
@@ -84,15 +92,6 @@ class DetailActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
 
     fun loadData() {
         supportActionBar?.title = movie.Title
@@ -111,6 +110,49 @@ class DetailActivity : AppCompatActivity() {
         binding.plotContent.plotDetailTextView.text = movie.Plot
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            R.id.action_save -> {
+                if (myMovies != null) {
+                    myMoviesDAO.delete(myMovies!!)
+                    myMovies = null
+                    loadStatus()
+                } else {
+                    showStatusAlertDialog()
+                }
+                setSavedIcon()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+
+    }
+
+
+    private fun loadStatus() {
+        if (myMovies != null) {
+            val iconId = when(myMovies!!.Status) {
+                Status.WATCHED -> Status.WATCHED.icon
+                Status.UNFINISHED -> Status.UNFINISHED.icon
+                Status.WANT_TO_WATCH -> Status.WANT_TO_WATCH.icon
+            }
+            binding.statusChip.setChipIconResource(iconId)
+            binding.statusChip.text = getString(myMovies!!.Status.title)
+            binding.statusChip.visibility = View.VISIBLE
+
+        } else {
+            binding.statusChip.visibility = View.GONE
+        }
+    }
+
+
     fun getMoviesById(id: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -127,5 +169,41 @@ class DetailActivity : AppCompatActivity() {
             }
 
         }
+    }
+    fun showStatusAlertDialog() {
+        val statusList = Status.entries.map { getString(it.title) }.toTypedArray()
+        var status: Status = Status.WANT_TO_WATCH
+        val checkedIndex = myMovies?.Status?.ordinal ?: -1
+
+        val alert = AlertDialog.Builder(this)
+        alert.setTitle(R.string.select_a_status)
+        alert.setSingleChoiceItems(statusList, checkedIndex) { dialog, which ->
+            status = Status.entries[which]
+        }
+        alert.setPositiveButton(R.string.ok) { dialog, which ->
+            if (myMovies != null) {
+                myMovies!!.Status = status
+                myMoviesDAO.update(myMovies!!)
+            } else {
+                myMovies = MyMovies(
+                    status,
+                    movie.Title,
+                    movie.Year,
+                    movie.imdbID,
+                    movie.Poster,
+                    movie.Plot,
+                    movie.Runtime,
+                    movie.Director,
+                    movie.Genre,
+                    movie.Country,
+                )
+                myMoviesDAO.insert(myMovies!!)
+            }
+            setSavedIcon()
+            loadStatus()
+        }
+        alert.show()
+        loadStatus()
+        loadData()
     }
 }
