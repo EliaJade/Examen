@@ -13,16 +13,16 @@ class DatabaseManager(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
             const val DATABASE_VERSION = 1
             private const val SQL_CREATE_MYMOVIE_MYMOVIE =
                 "CREATE TABLE ${MyMovies.TABLE_NAME} (" +
-                        "${MyMovies.COLUMN_BOOK_IMDBID} TEXT PRIMARY KEY," +
-                        "${MyMovies.COLUMN_BOOK_STATUS} INTEGER," +
-                        "${MyMovies.COLUMN_BOOK_TITLE} INTEGER," +
-                        "${MyMovies.COLUMN_BOOK_YEAR} INTEGER," +
-                        "${MyMovies.COLUMN_BOOK_POSTER} INTEGER," +
-                        "${MyMovies.COLUMN_BOOK_PLOT} INTEGER," +
-                        "${MyMovies.COLUMN_BOOK_RUNTIME} INTEGER," +
-                        "${MyMovies.COLUMN_BOOK_DIRECTOR} INTEGER," +
-                        "${MyMovies.COLUMN_BOOK_GENRE} INTEGER," +
-                        "${MyMovies.COLUMN_BOOK_COUNTRY} INTEGER)"
+                        "${MyMovies.COLUMN_MOVIE_IMDBID} TEXT PRIMARY KEY," +
+                        "${MyMovies.COLUMN_MOVIE_STATUS} INTEGER," +
+                        "${MyMovies.COLUMN_MOVIE_TITLE} INTEGER," +
+                        "${MyMovies.COLUMN_MOVIE_YEAR} INTEGER," +
+                        "${MyMovies.COLUMN_MOVIE_POSTER} INTEGER," +
+                        "${MyMovies.COLUMN_MOVIE_PLOT} INTEGER," +
+                        "${MyMovies.COLUMN_MOVIE_RUNTIME} INTEGER," +
+                        "${MyMovies.COLUMN_MOVIE_DIRECTOR} INTEGER," +
+                        "${MyMovies.COLUMN_MOVIE_GENRE} INTEGER," +
+                        "${MyMovies.COLUMN_MOVIE_COUNTRY} INTEGER)"
 
             private const val SQL_DROP_MYMOVIE_MYMOVIE = "DROP TABLE IF EXISTS ${MyMovies.TABLE_NAME}"
         }

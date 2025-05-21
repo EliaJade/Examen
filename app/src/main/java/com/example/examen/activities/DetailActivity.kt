@@ -46,6 +46,8 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
 
+        myMoviesDAO = MyMoviesDAO(this)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val id = intent.getStringExtra("MOVIE_ID")
@@ -138,7 +140,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun loadStatus() {
         if (myMovies != null) {
-            val iconId = when(myMovies!!.Status) {
+            val iconId = when(myMovies!!.Status!!) {
                 Status.WATCHED -> {
                     Status.WATCHED.icon
                 }
@@ -148,12 +150,10 @@ class DetailActivity : AppCompatActivity() {
                 Status.WANT_TO_WATCH -> {
                     Status.WANT_TO_WATCH.icon
                 }
-
-
             }
 
             binding.statusChip.setChipIconResource(iconId)
-            binding.statusChip.text = getString(myMovies!!.Status.title)
+            binding.statusChip.text = getString(myMovies!!.Status!!.title)
             binding.statusChip.visibility = View.VISIBLE
 
         } else {
