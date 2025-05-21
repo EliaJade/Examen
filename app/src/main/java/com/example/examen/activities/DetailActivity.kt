@@ -50,9 +50,10 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val id = intent.getStringExtra("MOVIE_ID")
+        val id = intent.getStringExtra("MOVIE_ID")!!
 
-        getMoviesById(id!!)
+        myMovies = myMoviesDAO.findById(id)
+        getMoviesById(id)
 
         binding.navigationBar.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -110,6 +111,8 @@ class DetailActivity : AppCompatActivity() {
 
         //PLOT
         binding.plotContent.plotDetailTextView.text = movie.Plot
+
+        loadStatus()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
