@@ -19,10 +19,18 @@
             android:src="@mipmap/ic_launcher"
             android:scaleType="centerCrop"/>
 
-
-
-
-
+        <com.google.android.material.chip.Chip
+            android:id="@+id/statusChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            app:chipIcon="@drawable/unfinished_ic"
+            app:chipIconSize="30dp"
+            app:chipStartPadding="4dp"
+            app:chipEndPadding="4dp"
+            app:textStartPadding="0dp"
+            app:textEndPadding="0dp"
+            android:text=""/>
 
 
 

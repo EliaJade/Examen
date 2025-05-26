@@ -23,6 +23,10 @@ import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_MOVIE_ID = "MOVIE_ID"
+    }
+
     lateinit var binding: ActivityDetailBinding
 
     lateinit var movie: Movie
@@ -54,6 +58,10 @@ class DetailActivity : AppCompatActivity() {
 
         myMovies = myMoviesDAO.findById(id)
         getMoviesById(id)
+
+        binding.statusChip.setOnClickListener {
+            showStatusAlertDialog()
+        }
 
         binding.navigationBar.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {

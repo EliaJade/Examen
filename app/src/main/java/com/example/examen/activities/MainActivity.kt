@@ -3,6 +3,7 @@ package com.example.examen.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var adapter: MovieAdapter
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -44,17 +47,26 @@ class MainActivity : AppCompatActivity() {
 
         searchMoviesByName("You")
 
-        adapter = MovieAdapter(movieList) {  position ->
+        /*adapter = MovieAdapter(movieList) {  position ->
             val movie = movieList [position]
             val intent = Intent (this, DetailActivity::class.java)
             intent.putExtra("MOVIE_ID",movie.imdbID)
             startActivity(intent)
+        }*/
+        adapter = MovieAdapter(emptyList()) { position ->
+            navigateToDetail(movieList[position])
         }
 
 
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager (this, 2)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        adapter.notifyDataSetChanged()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -77,6 +89,16 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.action_save -> {
+                val intent = Intent(this, MyMoviesActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
 
 
     fun searchMoviesByName(query: String) {
@@ -90,11 +112,17 @@ class MainActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.Main).launch {
                     adapter.items = movieList
                     adapter.notifyDataSetChanged()
+                    binding.recyclerView.scrollToPosition(0)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
 
         }
+    }
+    fun navigateToDetail(movie: Movie) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.EXTRA_MOVIE_ID, movie.imdbID)
+        startActivity(intent)
     }
 }
