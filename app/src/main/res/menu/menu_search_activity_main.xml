@@ -6,4 +6,10 @@
         android:title="@string/menu_search"
         app:showAsAction="always|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+
+    <item android:id="@+id/action_saved_movies"
+        android:icon="@drawable/archive"
+        android:title="@string/menu_saved_movies"
+        app:showAsAction="always"/>
+
 </menu>

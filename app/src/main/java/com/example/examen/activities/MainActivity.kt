@@ -101,6 +101,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     fun searchMoviesByName(query: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
