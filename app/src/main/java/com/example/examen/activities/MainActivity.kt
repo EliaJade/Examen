@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.action_save -> {
+            R.id.action_saved_movies -> {
                 val intent = Intent(this, MyMoviesActivity::class.java)
                 startActivity(intent)
                 return true
