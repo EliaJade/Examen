@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                 val service = MovieService.getInstance()
                 val result = service.findMoviesByName(query)
 
-                movieList = result.movie
+                movieList = result.movie.filter { it.Poster != "N/A" }
 
                 CoroutineScope(Dispatchers.Main).launch {
                     adapter.items = movieList
