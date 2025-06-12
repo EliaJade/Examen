@@ -130,7 +130,7 @@ class MyMoviesActivity: AppCompatActivity() {
         adapter.updateItems(myMovieList)
     }
 
-    fun navigateToDetail(book: MyMovies) {
+    fun navigateToDetail(movie: MyMovies) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(DetailActivity.EXTRA_MOVIE_ID, movie.imdbID)
         startActivity(intent)
